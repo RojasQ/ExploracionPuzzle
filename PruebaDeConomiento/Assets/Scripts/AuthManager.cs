@@ -4,6 +4,7 @@ using UnityEngine;
 using Firebase;
 using Firebase.Auth;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class AuthManager : MonoBehaviour
 {
@@ -103,6 +104,7 @@ public class AuthManager : MonoBehaviour
             //El usuario ingresó
             User = LoginTask.Result;
             Debug.LogFormat("Ingresó correctamente: {0} ({1})", User.DisplayName, User.Email);
+            SceneManager.LoadScene("PersonalizarPJ");
         }
     }
 
@@ -177,6 +179,7 @@ public class AuthManager : MonoBehaviour
                     else
                     {
                         //Perfil creado
+                        SceneManager.LoadScene("PersonalizarPJ");
                         warningRegisterText.text = "";
                     }
                 }
