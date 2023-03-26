@@ -64,7 +64,9 @@ public class ChangeColor : MonoBehaviour
     }
 
     private void OnDestroy() {
+
         SaveData();
+        
     }
 
     private void SaveData(){
