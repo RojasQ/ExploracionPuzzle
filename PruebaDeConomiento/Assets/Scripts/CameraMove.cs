@@ -14,6 +14,8 @@ public class CameraMove : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
 
+    public static bool winning = false;
+
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
@@ -26,12 +28,21 @@ public class CameraMove : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
         // Bloquea el mouse
-        Cursor.lockState = CursorLockMode.Locked;
+        /* if(!winning){
+            ursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        } */
+        
     }
 
     void Update()
     {
+        winning = ShowPrize.winning;
+
+        if(!winning){
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         // Recalcula la dirección del movimiento basado en los ejes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -81,7 +92,10 @@ public class CameraMove : MonoBehaviour
     IEnumerator Escape(){
 
         yield return new WaitForSeconds(2);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
+        if(!winning){
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }
