@@ -1,1 +1,1 @@
-# PruebaDeConocimiento
+# ExploracionPuzzle
